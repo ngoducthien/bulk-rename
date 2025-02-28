@@ -1,11 +1,34 @@
 #!/bin/bash
 
-# Define the folder containing the files
-folder="/path/to/your/folder"
+# Load variables from the external file
+source variables.conf
 
-# Define the pattern to be replaced and the replacement
-pattern="old_pattern"
-replacement="new_pattern"
+# Function to display usage
+usage() {
+  echo "Usage: $0 [-h]"
+  echo
+  echo "This script renames files in a specified folder by replacing a pattern in filenames."
+  echo
+  echo "Configuration is stored in 'variables.conf':"
+  echo "  folder=\"/path/to/your/folder\"   # Folder containing files"
+  echo "  pattern=\"old_pattern\"           # Text to replace"
+  echo "  replacement=\"new_pattern\"       # New text for replacement"
+  echo
+  echo "Run the script without arguments after setting 'variables.conf':"
+  echo "  ./bulk_rename.sh"
+  exit 0
+}
+
+# Check for help flag
+if [[ "$1" == "-h" ]]; then
+  usage
+fi
+
+# Check if the folder is set
+if [[ -z "$folder" || -z "$pattern" || -z "$replacement" ]]; then
+  echo "Error: Missing required variables in variables.conf"
+  exit 1
+fi
 
 # Change to the specified folder
 cd "$folder" || { echo "Directory not found: $folder"; exit 1; }
