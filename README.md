@@ -2,7 +2,7 @@
 
 ## Overview
 
-This script renames all files in a specified folder based on a predefined pattern. It allows users to easily modify file names by replacing a specific pattern with a new one. The script also includes basic error handling and logs each renamed file for easy tracking.
+This script renames all files in a specified folder based on a predefined pattern. It allows users to easily modify file names by replacing a specific pattern with a new one. It also modifies file contents to reflect the new filenames where applicable. The script includes basic error handling and logs each renamed file for easy tracking.
 
 ## Usage:
 1. **Set the Folder Path**: Define the path to the folder containing the files you want to rename by modifying the folder variable.
@@ -19,7 +19,13 @@ folder="/path/to/your/folder"
 # Set the pattern and replacement
 pattern="old_pattern"
 replacement="new_pattern"
+```
 
-# Run the script
+**Run the script**
+```bash
 ./rename_files.sh
 ```
+
+## Useful Tips:
+
+Always back up important data before performing a bulk rename.
